@@ -1,0 +1,11 @@
+<nav>
+    <%= link_to('Voltar para Homepage', root_path)%>
+</nav>
+<section>
+    <h1>Galpão <%=@warehouse.code%></h1>
+    <span>Descrição: <%=@warehouse.description%></span>
+    <span>Nome: <%=@warehouse.name%></span>
+    <span>Cidade: <%=@warehouse.city%></span>
+    <span>Área: <%=@warehouse.area%> m2</span>
+    <span>Endereço: <%=@warehouse.address%>, <%=@warehouse.zip%></span>
+</section>
