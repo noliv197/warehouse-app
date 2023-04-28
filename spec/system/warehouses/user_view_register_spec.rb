@@ -34,7 +34,7 @@ describe 'Usuário entra na tela de cadastro de novo galpão' do
         expect(page).to have_content('Cidade: Rio de Janeiro')
         expect(page).to have_content('Área: 50000 m2')
     end
-    it 'e não preenche algum campo' do
+    it 'e cadastro não é concluido' do
         # Arrange
         # Act
         visit(root_path)
@@ -43,6 +43,6 @@ describe 'Usuário entra na tela de cadastro de novo galpão' do
         fill_in('Código', with: '')
         click_on('Salvar')
         # Assert
-        expect(page).to have_content('Preencha todos os campos do formulário')
+        expect(page).to have_content('Galpão não cadastrado')
     end
 end

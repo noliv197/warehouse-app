@@ -1,6 +1,7 @@
-<nav>
-    <%= link_to('Voltar para Homepage', root_path)%>
-</nav>
+
+<%= link_to('Voltar para Homepage', root_path)%>
+<%= link_to('Editar', edit_warehouse_path(@warehouse))%>
+
 <section>
     <h1>Galpão <%=@warehouse.code%></h1>
     <span>Descrição: <%=@warehouse.description%></span>
@@ -9,3 +10,4 @@
     <span>Área: <%=@warehouse.area%> m2</span>
     <span>Endereço: <%=@warehouse.address%>, <%=@warehouse.zip%></span>
 </section>
+<%= button_to('Deletar Galpão', warehouse_path(@warehouse), method: :delete)%>

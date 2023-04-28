@@ -13,10 +13,17 @@
   <body>
     <header>
       <nav>
-        <%= link_to 'Homepage', root_path%>
-      <nav>
+        <%= link_to 'Página inicial', root_path%>
+        <%= link_to 'Fornecedores', suppliers_path%>
+        <%= link_to 'Modelos de Produtos', product_models_path%>
+      </nav>
     </header>
     <main>
+      <% if flash[:notice]%>
+        <div>
+            <%= flash[:notice]%>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

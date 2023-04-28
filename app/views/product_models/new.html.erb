@@ -1,0 +1,10 @@
+<h1>Cadastrar novo modelo de produto</h1>
+<%if @product_model.errors.any?%>
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+        <%@product_model.errors.full_messages.each do |msg| %>
+            <li><%=msg%></li>
+        <%end%>
+    </ul>
+<%end%>
+<%= render 'form'%>

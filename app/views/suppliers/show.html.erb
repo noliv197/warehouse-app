@@ -1,0 +1,20 @@
+
+<%= link_to('Editar', edit_supplier_path(@supplier))%>
+
+<h1>Fornecedor <%=@supplier.brand_name%></h1>
+<dl>
+    <dt>Informações Gerais</dt>
+    <dd>Nome da corporação: <%=@supplier.corporate_name%></dd>
+    <dd>Nome da marca: <%=@supplier.brand_name%></dd>
+    <dd>CNPJ: <%=@supplier.cnpj%></dd>
+    <dd>Número de Registro: <%=@supplier.registration_number%></dd>
+
+    <dt>Contato</dt>
+    <dd>Email: <%=@supplier.email%></dd>
+    <dd>Telefone: <%=@supplier.phone%></dd>
+
+    <dt>Endereço</dt>
+    <dd>Endereço Completo: <%=@supplier.full_address%></dd>
+    <dd>Cidade: <%=@supplier.city%></dd>
+    <dd>Estado: <%=@supplier.state%></dd>
+</dl>
