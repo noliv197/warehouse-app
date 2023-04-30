@@ -8,6 +8,8 @@ describe 'Usuário edita galpão' do
             address:'Avenida do Aeroporto',zip:'414444100',
             description:'Galpão destinado para cargas internacionais'
         )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit root_path
         click_on('Maceio')
@@ -25,6 +27,8 @@ describe 'Usuário edita galpão' do
             address:'Avenida do Aeroporto',zip:'414444100',
             description:'Galpão destinado para cargas internacionais'
         )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit root_path
         click_on('Maceio')

@@ -6,7 +6,10 @@ describe 'Usuário vê detalhes de um galpão' do
         Warehouse.create(name: 'Aeroporto Rio', code: 'SDU',
                          city: 'Rio de Janeiro', area: 60000,
                          address:'Avenida do Aeroporto',zip:'414444100',
-                         description:'Galpão destinado para cargas internacionais')
+                         description:'Galpão destinado para cargas internacionais'
+                        )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         click_on('Aeroporto Rio')
@@ -23,7 +26,10 @@ describe 'Usuário vê detalhes de um galpão' do
         Warehouse.create(name: 'Aeroporto Rio', code: 'SDU',
             city: 'Rio de Janeiro', area: 60000,
             address:'Avenida do Aeroporto',zip:'414444100',
-            description:'Galpão destinado para cargas internacionais')
+            description:'Galpão destinado para cargas internacionais'
+        )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         click_on('Aeroporto Rio')

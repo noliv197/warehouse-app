@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'Usuário visita tela inicial' do
     it 'e vê o nome do app' do
         # Arrange
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         # Assert
@@ -21,6 +23,8 @@ describe 'Usuário visita tela inicial' do
             address:'Avenida do Aeroporto',zip:'414444100',
             description:'Galpão destinado para cargas internacionais'
         )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         # Assert
@@ -37,6 +41,8 @@ describe 'Usuário visita tela inicial' do
     end
     it 'e não tem nenhum galpão cadastrado' do
         # Arrange
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         # Assert

@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'Usuário entra na tela de cadastro de novo galpão' do
     it 'e vê formulario de cadastro' do
         # Arrange
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         click_on('Cadastrar novo galpão')
@@ -17,6 +19,8 @@ describe 'Usuário entra na tela de cadastro de novo galpão' do
     end
     it 'e cadastra um novo galpão' do
         # Arrange
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         click_on('Cadastrar novo galpão')
@@ -36,6 +40,8 @@ describe 'Usuário entra na tela de cadastro de novo galpão' do
     end
     it 'e cadastro não é concluido' do
         # Arrange
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         # Act
         visit(root_path)
         click_on('Cadastrar novo galpão')

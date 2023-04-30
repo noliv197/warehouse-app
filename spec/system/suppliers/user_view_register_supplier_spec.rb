@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'Usuário entra na página de fornecedores' do
     it 'e entra na tela de cadastro' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+
         visit suppliers_path
         click_on 'Cadastrar novo Fornecedor'
         expect(page).to have_field('Nome da Corporação')
@@ -15,6 +18,9 @@ describe 'Usuário entra na página de fornecedores' do
         expect(page).to have_field('Telefone')
     end
     it 'e cadastra fornecedor com sucesso' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+
         visit suppliers_path
         click_on 'Cadastrar novo Fornecedor'
         fill_in('Nome da Corporação',with: 'Amazon')
@@ -32,6 +38,9 @@ describe 'Usuário entra na página de fornecedores' do
         expect(page).to have_content('São Paulo - SP')
     end
     it 'e não consegue cadastrar fornecedor' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+        
         visit suppliers_path
         click_on 'Cadastrar novo Fornecedor'
         fill_in('Endereço Completo',with: '')
