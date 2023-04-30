@@ -6,6 +6,8 @@ describe 'Usuário cadastra um modelo de produto' do
             corporate_name: 'Galpões&CIA',brand_name:'GC',cnpj:'1234567899874',registration_number: '456871321',
             full_address: 'Avenida copacabana',city:'Rio de Janeiro',state:'RJ',email:'galpoesecia@gmail.com',phone:'(61)956899856'
         )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar novos Modelos de Produtos'
@@ -24,6 +26,8 @@ describe 'Usuário cadastra um modelo de produto' do
         expect(page).to have_content 'Fornecedor'
     end
     it 'com fracasso' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar novos Modelos de Produtos'

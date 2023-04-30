@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 describe 'Usuário vê modelos de produtos' do
-    it 'a partir do menu' do
+    it 'a partir do menu sem autenticação'do
+        visit root_path
+        within('nav') do
+            click_on 'Modelos de Produtos'
+        end
+        expect(current_path).to eq(new_user_session_path)
+    end
+    it 'a partir do menu com autenticação' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+        
         visit root_path
         within('nav') do
             click_on 'Modelos de Produtos'
@@ -21,6 +31,9 @@ describe 'Usuário vê modelos de produtos' do
             name:'Controle PS5',weight:20,height:30,width:30,
             depth:5,sku:'CXE78RF5R8E9T8SD568R',supplier: supplier
         )
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+
         visit root_path
         within('nav') do
             click_on 'Modelos de Produtos'
@@ -32,6 +45,9 @@ describe 'Usuário vê modelos de produtos' do
         expect(page).to have_content('CXE78RF5R8E9T8SD568R')
     end
     it 'mas nenhum modelo está cadastrado' do
+        user = User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+        login_as(user)
+
         visit root_path
         within('nav') do
             click_on 'Modelos de Produtos'

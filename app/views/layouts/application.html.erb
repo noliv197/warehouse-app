@@ -12,10 +12,20 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to 'Página inicial', root_path%>
-        <%= link_to 'Fornecedores', suppliers_path%>
-        <%= link_to 'Modelos de Produtos', product_models_path%>
+      <nav class='menu'>
+        <div>
+          <%= link_to 'Página inicial', root_path%> |
+          <%= link_to 'Fornecedores', suppliers_path%> |
+          <%= link_to 'Modelos de Produtos', product_models_path%> |
+        </div>
+        <div class='menu_container'>
+          <% if user_signed_in?%>
+            <span><%= current_user.username%></span>
+            <%= button_to 'Sair', destroy_user_session_path, method: :delete%>
+          <%else%>
+            <%= link_to 'Entrar', new_user_session_path%>
+          <%end%>
+        </div>
       </nav>
     </header>
     <main>

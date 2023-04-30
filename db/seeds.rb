@@ -30,3 +30,4 @@ ProductModel.create!(
     name:'Controle PS5',weight:20,height:30,width:30,
     depth:5,sku:'Controle-XSD25478985',supplier: second_supplier
 )
+User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')

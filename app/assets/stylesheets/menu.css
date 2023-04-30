@@ -1,0 +1,10 @@
+.menu{
+    display: flex;
+    justify-content: space-between;
+}
+.menu_container{
+    display: flex;
+}
+.menu_container span{
+    margin-right: 2rem;
+}
