@@ -7,4 +7,7 @@ class ProductModel < ApplicationRecord
   validates :weight,:height,
   :width,:depth, numericality: {greater_than_or_equal_to: 0}
 
+  def dimensions
+    "#{height}cm x #{width}cm x #{depth}cm"
+  end
 end

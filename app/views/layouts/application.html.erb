@@ -14,9 +14,12 @@
     <header>
       <nav class='menu'>
         <div>
-          <%= link_to 'Página inicial', root_path%> |
+          <%=link_to root_path do%>
+              <p>Galpões & Estoque</p> |
+          <%end%> 
           <%= link_to 'Fornecedores', suppliers_path%> |
           <%= link_to 'Modelos de Produtos', product_models_path%> |
+          <%= link_to 'Registrar Pedido', new_order_path%> |
         </div>
         <div class='menu_container'>
           <% if user_signed_in?%>

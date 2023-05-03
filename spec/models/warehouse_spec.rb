@@ -110,4 +110,17 @@ RSpec.describe Warehouse, type: :model do
       end
     end
   end
+
+  describe '#full_description' do
+    it 'exibe nome e o código' do
+      warehouse = Warehouse.new(
+        name:'Galpão Litoral',code:'RIO',city:'Rio de Janeiro',area:'60000',
+        zip:'72589685',address:'Copacabana',description:'Galpão no litoral'
+      )
+
+      result = warehouse.full_description
+
+      expect(result).to eq('RIO | Galpão Litoral')
+    end
+  end
 end
