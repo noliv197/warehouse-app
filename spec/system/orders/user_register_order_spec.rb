@@ -28,8 +28,10 @@ describe 'Usuário cadastra um pedido' do
             full_address: 'Avenida Brasil',city:'São Paulo',state:'SP',email:'amazon@gmail.com',phone:'(61)956899856'
         )
         user = User.create!(username:'Natalia',email:'natalia@email.com',password:'12345678')
-        login_as(user)
+        
+        allow(SecureRandom).to receive(:alphanumeric).and_return('ABC12345')
 
+        login_as(user)
         visit root_path
         click_on 'Registrar Pedido'
         select 'MCZ | Maceio', from: 'Galpão Destino'
@@ -40,6 +42,7 @@ describe 'Usuário cadastra um pedido' do
         expect(page).not_to have_content 'Aeroporto Rio'
         expect(page).not_to have_content 'Amazon'
         expect(page).to have_content 'Pedido registrado com sucesso'
+        expect(page).to have_content 'Pedido ABC12345'
         expect(page).to have_content 'Galpão Destino: Maceio'
         expect(page).to have_content 'Fornecedor: Galpões&CIA'
         expect(page).to have_content 'Data Estimada de Entrega: 20/12/2023'
