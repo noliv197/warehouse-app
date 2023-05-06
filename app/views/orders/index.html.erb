@@ -1,0 +1,16 @@
+<h1>Meus Pedidos</h1>
+<% @orders.each do |o|%>
+    <div>
+        <h2>Pedido <%=link_to o.code, o%></h2>
+        <dl>
+            <dt><%=Order.human_attribute_name('warehouse_id')%>:</dt>
+            <dd><%=o.warehouse.name%></dd>
+
+            <dt><%=Order.human_attribute_name('supplier_id')%>:</dt>
+            <dd><%=o.supplier.corporate_name%></dd>
+
+            <dt><%=Order.human_attribute_name('estimated_delivery_date')%>:</dt>
+            <dd><%=I18n.localize(o.estimated_delivery_date)%></dd>
+        </dl>
+    <div>
+<%end%>

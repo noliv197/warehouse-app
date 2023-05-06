@@ -1,14 +1,20 @@
-Warehouse.create!(
+first_warehouse = Warehouse.create!(
     name: 'Maceio', code: 'MCZ',
     city: 'Maceio', area: 50000,
-    address:'Avenida do Aeroporto',zip:'589467854',
+    address:'Avenida Principal',zip:'589467854',
     description:'Galpão destinado para cargas maritimas'
 )
-Warehouse.create!(
+second_warehouse = Warehouse.create!(
     name: 'Aeroporto Rio', code: 'SDU',
     city: 'Rio de Janeiro', area: 60000,
-    address:'Avenida do Aeroporto',zip:'414444100',
-    description:'Galpão destinado para cargas internacionais'
+    address:'Avenida Copacabana',zip:'414444100',
+    description:'Galpão destinado para cargas perecíveis'
+)
+third_warehouse = Warehouse.create!(
+    name: 'Aeroporto SP', code: 'GRU',
+    city: 'São Paulo', area: 1000000,
+    address:'Avenida Brasil',zip:'854560258',
+    description:'Galpão destinado para cargas importadas'
 )
 first_supplier = Supplier.create!(
     corporate_name: 'Galpões&CIA',brand_name:'GC',
@@ -30,9 +36,22 @@ ProductModel.create!(
     name:'Controle PS5',weight:20,height:30,width:30,
     depth:5,sku:'Controle-XSD25478985',supplier: second_supplier
 )
-User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+first_user = User.create!(username:'Natalia',email:'natalia@email.com',password:'12345678')
+second_user = User.create!(username:'Ana',email:'ana@email.com',password:'12345678')
 
-Order.create!(Order.new(
-    user: user, warehouse: warehouse,
-    supplier:supplier, estimated_delivery_date: '2030-12-12'
-))
+Order.create!(
+    user: first_user, warehouse: first_warehouse,
+    supplier:second_supplier, estimated_delivery_date: '2030-10-12'
+)
+Order.create!(
+    user: first_user, warehouse: second_warehouse,
+    supplier:first_supplier, estimated_delivery_date: '2030-11-12'
+)
+Order.create!(
+    user: second_user, warehouse: third_warehouse,
+    supplier:first_supplier, estimated_delivery_date: '2030-02-12'
+)
+Order.create!(
+    user: second_user, warehouse: second_warehouse,
+    supplier:second_supplier, estimated_delivery_date: '2030-12-12'
+)

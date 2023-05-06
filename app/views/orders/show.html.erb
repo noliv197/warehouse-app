@@ -12,3 +12,5 @@
     <dt><%=Order.human_attribute_name('user_id')%>:</dt>
     <dd><%=@order.user.username%> < <%=@order.user.email%> ></dd>
 </dl>
+
+<%= link_to 'Editar', edit_order_path(@order.id)%>
