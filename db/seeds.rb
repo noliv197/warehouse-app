@@ -31,3 +31,8 @@ ProductModel.create!(
     depth:5,sku:'Controle-XSD25478985',supplier: second_supplier
 )
 User.create!(username:'natalia',email:'natalia@email.com',password:'12345678')
+
+Order.create!(Order.new(
+    user: user, warehouse: warehouse,
+    supplier:supplier, estimated_delivery_date: '2030-12-12'
+))
