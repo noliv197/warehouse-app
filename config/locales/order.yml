@@ -1,4 +1,7 @@
 pt-BR:
+  pending: 'Pendente'
+  delivered: 'Entregue'
+  canceled: 'Cancelado'
   activerecord:
     models:
       order: 
@@ -9,4 +12,5 @@ pt-BR:
         warehouse_id: 'Galpão Destino'
         supplier_id: 'Fornecedor'
         user_id: 'Funcionário Responsável'
+        status: 'Situação do Pedido'
         estimated_delivery_date: 'Data Estimada de Entrega'

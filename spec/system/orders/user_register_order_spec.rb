@@ -45,6 +45,7 @@ describe 'Usuário cadastra um pedido' do
         expect(page).to have_content 'Pedido ABC12345'
         expect(page).to have_content 'Galpão Destino: Maceio'
         expect(page).to have_content 'Fornecedor: Galpões&CIA'
+        expect(page).to have_content 'Situação do Pedido: Pendente'
         expect(page).to have_content 'Data Estimada de Entrega: 20/12/2023'
         expect(page).to have_content 'Funcionário Responsável: Natalia < natalia@email.com >'
     end

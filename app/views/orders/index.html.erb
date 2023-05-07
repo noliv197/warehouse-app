@@ -9,6 +9,9 @@
             <dt><%=Order.human_attribute_name('supplier_id')%>:</dt>
             <dd><%=o.supplier.corporate_name%></dd>
 
+            <dt><%=Order.human_attribute_name('status')%>:</dt>
+            <dd><%=I18n.translate(o.status)%></dd>
+
             <dt><%=Order.human_attribute_name('estimated_delivery_date')%>:</dt>
             <dd><%=I18n.localize(o.estimated_delivery_date)%></dd>
         </dl>

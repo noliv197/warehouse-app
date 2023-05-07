@@ -20,7 +20,7 @@ describe 'Usuário busca por um pedido' do
             expect(page).not_to have_button('Buscar')
         end
     end
-    it 'e encontra um pedido' do
+    it 'com código exato e é redirecionado para sua página' do
         user = User.create!(username:'Natalia',email:'natalia@email.com',password:'12345678')
         supplier = Supplier.create!(
             corporate_name: 'Galpões&CIA',brand_name:'GC',cnpj:'1234567899874',registration_number: '456871321',
@@ -45,8 +45,8 @@ describe 'Usuário busca por um pedido' do
         fill_in 'Buscar Pedido', with: order.code
         click_on 'Buscar'
 
-        expect(page).to have_content("Resultados da Busca por: #{order.code}")
-        expect(page).to have_content('1 Pedido Encontrado')
+        expect(current_path).to eq order_path(order)
+        expect(page).to have_content("Pedido #{order.code}")
     end
     it 'e encontra múltiplos pedidos' do
         user = User.create!(username:'Natalia',email:'natalia@email.com',password:'12345678')
