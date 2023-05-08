@@ -9,5 +9,23 @@
     <span>Cidade: <%=@warehouse.city%></span>
     <span>Área: <%=@warehouse.area%> m2</span>
     <span>Endereço: <%=@warehouse.address%>, <%=@warehouse.zip%></span>
+    <h2>Itens do Galpão</h2>
+    <ul>
+        <%@stocks.each_pair do |pm, quantity|%>
+            <li><%="#{quantity} x #{pm.name}"%></li>
+        <%end%>
+    </ul>
 </section>
+
+<h2>Saída do Estoque</h2>
+<%=form_with(url: warehouse_stock_product_destinations_path(@warehouse.id)) do |f|%>
+    <%=f.label :product_model_id, 'Item para saída'%>
+    <%=f.collection_select :product_model_id, @product_models,:id,:name%>
+    <%=f.label :address,'Endereço Destino' %>
+    <%=f.text_field :address%>
+    <%=f.label :recipient, 'Destinatário'%>
+    <%=f.text_field :recipient%>
+    <%=f.submit 'Confirmar Retirada'%>
+<%end%>
+
 <%= button_to('Deletar Galpão', warehouse_path(@warehouse), method: :delete)%>

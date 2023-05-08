@@ -12,9 +12,16 @@ describe 'Usuário informa novo status de pedido' do
             address:'Avenida do Aeroporto',zip:'414444100',
             description:'Galpão destinado para cargas internacionais'
         )
+        product = ProductModel.create!(
+            name:'TV 32',weight:8000,height:70,width:45,
+            depth:10,sku:'TV32-SAMSU-TXP90-CS9',supplier: supplier
+        )
         order = Order.create!(
             user: user, warehouse: warehouse,
             supplier:supplier, estimated_delivery_date: 1.day.from_now
+        )
+        item = OrderItem.create!(
+            order: order, product_model: product, quantity: 5
         )
 
         login_as(user)
@@ -26,7 +33,9 @@ describe 'Usuário informa novo status de pedido' do
         expect(current_path).to eq order_path(order.id)
         expect(page).to have_content 'Situação do Pedido: Entregue' 
         expect(page).not_to have_button 'Marcar como ENTREGUE'    
-        expect(page).not_to have_button 'Cancelar Pedido'  
+        expect(page).not_to have_button 'Cancelar Pedido' 
+        expect(StockProduct.count).to eq 5 
+        expect(StockProduct.where(product_model:product,warehouse:warehouse).count).to eq 5
     end
     it 'para pedido cancelado' do
         user = User.create!(username:'ana',email:'ana@email.com',password:'12345678')
@@ -39,9 +48,16 @@ describe 'Usuário informa novo status de pedido' do
             address:'Avenida do Aeroporto',zip:'414444100',
             description:'Galpão destinado para cargas internacionais'
         )
+        product = ProductModel.create!(
+            name:'TV 32',weight:8000,height:70,width:45,
+            depth:10,sku:'TV32-SAMSU-TXP90-CS9',supplier: supplier
+        )
         order = Order.create!(
             user: user, warehouse: warehouse,
             supplier:supplier, estimated_delivery_date: 1.day.from_now
+        )
+        item = OrderItem.create!(
+            order: order, product_model: product, quantity: 5
         )
 
         login_as(user)
@@ -54,5 +70,6 @@ describe 'Usuário informa novo status de pedido' do
         expect(page).to have_content 'Situação do Pedido: Cancelado'
         expect(page).not_to have_button 'Marcar como ENTREGUE'  
         expect(page).not_to have_button 'Cancelar Pedido'     
+        expect(StockProduct.count).to eq 0
     end
 end

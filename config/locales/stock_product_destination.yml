@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      stock_product_destination:  'Destino do Produto em Estoque'
+    attributes:
+      stock_product_destination: 
+        stock_product: 'Produto em Estoque'
+        address: 'Endereço Destino'
+        recipient: 'Destinatário'
